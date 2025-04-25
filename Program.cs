@@ -95,8 +95,7 @@ builder.Services.AddAuthentication("Bearer")
             ValidIssuer = builder.Configuration["Authentication:Issuer"],
             ValidAudience = builder.Configuration["Authentication:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(
-                System.Text.Encoding.ASCII.GetBytes(builder.Configuration["Authentication:SecretForKey"] ??
-                throw new InvalidOperationException("Authentication:SecretForKey is not configured")))
+                Convert.FromBase64String(builder.Configuration["Authentication:SecretForKey"]))
         };
     });
 
