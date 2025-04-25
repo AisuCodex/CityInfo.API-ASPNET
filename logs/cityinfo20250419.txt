@@ -1,0 +1,51 @@
+2025-04-19 10:27:53.167 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2025-04-19 10:27:53.614 +08:00 [DBG] Hosting starting
+2025-04-19 10:27:53.731 +08:00 [DBG] Middleware loaded
+2025-04-19 10:27:53.739 +08:00 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16481 B).
+2025-04-19 10:27:53.743 +08:00 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2025-04-19 10:27:53.773 +08:00 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2025-04-19 10:27:53.833 +08:00 [INF] Now listening on: http://localhost:5212
+2025-04-19 10:27:53.833 +08:00 [DBG] Loaded hosting startup assembly CityInfo.API
+2025-04-19 10:27:53.834 +08:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2025-04-19 10:27:53.835 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-19 10:27:53.838 +08:00 [INF] Hosting environment: Production
+2025-04-19 10:27:53.838 +08:00 [INF] Content root path: C:\Users\aisur\OneDrive\Desktop\ASP.NET\CityInfo\CityInfo.API
+2025-04-19 10:27:53.840 +08:00 [DBG] Hosting started
+2025-04-19 10:27:55.328 +08:00 [DBG] Connection id "0HNBUT75EITS0" accepted.
+2025-04-19 10:27:55.330 +08:00 [DBG] Connection id "0HNBUT75EITS1" accepted.
+2025-04-19 10:27:55.332 +08:00 [DBG] Connection id "0HNBUT75EITS0" started.
+2025-04-19 10:27:55.367 +08:00 [DBG] Connection id "0HNBUT75EITS1" started.
+2025-04-19 10:27:55.532 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:5212/swagger/index.html - null null
+2025-04-19 10:27:55.566 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2025-04-19 10:27:55.577 +08:00 [WRN] Failed to determine the https port for redirect.
+2025-04-19 10:27:55.636 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2025-04-19 10:27:55.637 +08:00 [DBG] Request did not match any endpoints
+2025-04-19 10:27:55.652 +08:00 [DBG] Connection id "0HNBUT75EITS1" completed keep alive response.
+2025-04-19 10:27:55.666 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:5212/swagger/index.html - 404 0 null 137.4084ms
+2025-04-19 10:27:55.676 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5212/swagger/index.html, Response status code: 404
+2025-04-19 10:27:56.462 +08:00 [DBG] Connection id "0HNBUT75EITS0" received FIN.
+2025-04-19 10:27:56.464 +08:00 [DBG] Connection id "0HNBUT75EITS1" received FIN.
+2025-04-19 10:27:56.471 +08:00 [DBG] Connection id "0HNBUT75EITS1" disconnecting.
+2025-04-19 10:27:56.474 +08:00 [DBG] Connection id "0HNBUT75EITS1" stopped.
+2025-04-19 10:27:56.474 +08:00 [DBG] Connection id "0HNBUT75EITS0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-04-19 10:27:56.475 +08:00 [DBG] Connection id "0HNBUT75EITS0" disconnecting.
+2025-04-19 10:27:56.476 +08:00 [DBG] Connection id "0HNBUT75EITS0" stopped.
+2025-04-19 10:27:56.477 +08:00 [DBG] Connection id "0HNBUT75EITS1" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-04-19 10:28:03.043 +08:00 [DBG] Connection id "0HNBUT75EITS2" accepted.
+2025-04-19 10:28:03.044 +08:00 [DBG] Connection id "0HNBUT75EITS2" started.
+2025-04-19 10:28:03.044 +08:00 [DBG] Connection id "0HNBUT75EITS3" accepted.
+2025-04-19 10:28:03.044 +08:00 [DBG] Connection id "0HNBUT75EITS3" started.
+2025-04-19 10:28:03.055 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:5212/swagger/index.html - null null
+2025-04-19 10:28:03.057 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2025-04-19 10:28:03.061 +08:00 [DBG] Request did not match any endpoints
+2025-04-19 10:28:03.062 +08:00 [DBG] Connection id "0HNBUT75EITS2" completed keep alive response.
+2025-04-19 10:28:03.062 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:5212/swagger/index.html - 404 0 null 7.5602ms
+2025-04-19 10:28:03.063 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5212/swagger/index.html, Response status code: 404
+2025-04-19 10:28:06.457 +08:00 [DBG] Connection id "0HNBUT75EITS3" received FIN.
+2025-04-19 10:28:06.457 +08:00 [DBG] Connection id "0HNBUT75EITS2" received FIN.
+2025-04-19 10:28:06.457 +08:00 [DBG] Connection id "0HNBUT75EITS3" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-04-19 10:28:06.457 +08:00 [DBG] Connection id "0HNBUT75EITS3" disconnecting.
+2025-04-19 10:28:06.457 +08:00 [DBG] Connection id "0HNBUT75EITS2" disconnecting.
+2025-04-19 10:28:06.457 +08:00 [DBG] Connection id "0HNBUT75EITS3" stopped.
+2025-04-19 10:28:06.457 +08:00 [DBG] Connection id "0HNBUT75EITS2" stopped.
+2025-04-19 10:28:06.458 +08:00 [DBG] Connection id "0HNBUT75EITS2" sending FIN because: "The Socket transport's send loop completed gracefully."
