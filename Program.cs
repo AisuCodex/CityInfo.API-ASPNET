@@ -101,10 +101,11 @@ builder.Services.AddAuthentication("Bearer")
 
     builder.Services.AddAuthorization(options =>
     {
-        options.AddPolicy("MustBeFromAntwerp", policy =>
+        options.AddPolicy("AllowedCities", policy =>
         {
             policy.RequireAuthenticatedUser();
-            policy.RequireClaim("city", "Antwerp");
+            policy.RequireClaim("city", new[]{
+                "Antwerp", "New York City", "Paris"});
         });
     });
 

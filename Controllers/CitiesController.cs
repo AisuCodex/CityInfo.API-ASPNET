@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace CityInfo.API.Controllers
 {
   [ApiController]
-  [Authorize (Policy = "MustBeFromAntwerp")]
+  [Authorize (Policy = "AllowedCities")]
   [Route("api/cities")]
   public class CitiesController : ControllerBase
   {
