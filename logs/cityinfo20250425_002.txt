@@ -3325,3 +3325,6 @@ LIMIT @__p_1 OFFSET @__p_0
 2025-04-25 17:00:11.674 +08:00 [DBG] Disposing connection to database 'main' on server 'CityInfo.db'.
 2025-04-25 17:00:11.676 +08:00 [DBG] Disposed connection to database 'main' on server 'CityInfo.db' (1ms).
 2025-04-25 17:00:11.678 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:5212/api/cities - 200 838 application/json; charset=utf-8 5806.6571ms
+2025-04-25 17:02:23.460 +08:00 [DBG] Connection id "0HNC3QTUN5MJP" disconnecting.
+2025-04-25 17:02:23.465 +08:00 [DBG] Connection id "0HNC3QTUN5MJP" stopped.
+2025-04-25 17:02:23.470 +08:00 [DBG] Connection id "0HNC3QTUN5MJP" sending FIN because: "The Socket transport's send loop completed gracefully."
