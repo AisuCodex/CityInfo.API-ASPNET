@@ -10,7 +10,7 @@ namespace CityInfo.API.Controllers
 {
   [Route("api/cities/{cityId}/pointsofinterest")]
   [ApiController]
-  [Authorize (Policy = "AllowedCities")]
+  // [Authorize (Policy = "AllowedCities")]
   [Produces("application/json")]
 
   public class PointsOfInterestController : ControllerBase

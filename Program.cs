@@ -7,6 +7,7 @@ using CityInfo.API.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -108,6 +109,12 @@ builder.Services.AddAuthentication("Bearer")
                 "Antwerp", "New York City", "Paris"});
         });
     });
+    builder.Services.AddApiVersioning(setupAction =>
+    {
+        setupAction.ReportApiVersions = true;
+        setupAction.AssumeDefaultVersionWhenUnspecified = true;
+        setupAction.DefaultApiVersion = new ApiVersion(1, 0);
+    }).AddMvc();
 
 var app = builder.Build();
 
