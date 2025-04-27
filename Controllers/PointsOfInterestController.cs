@@ -11,7 +11,7 @@ namespace CityInfo.API.Controllers
 {
   [Route("api/v{version:apiVersion}/cities/{cityId}/pointsofinterest")]
   [ApiController]
-  // [Authorize (Policy = "AllowedCities")]
+  [Authorize (Policy = "AllowedCities")]
   [Produces("application/json")]
   [ApiVersion("2")]
 
@@ -48,12 +48,12 @@ namespace CityInfo.API.Controllers
       int cityId)
     {
       //Authorization
-      // var cityName = User.Claims.FirstOrDefault(c => c.Type == "city")?.Value;
+      var cityName = User.Claims.FirstOrDefault(c => c.Type == "city")?.Value;
       
-      // if(!await _cityInfoRepository.CityNameMatchesCityId(cityName, cityId))
-      // {
-      //   return Forbid();
-      // }
+      if(!await _cityInfoRepository.CityNameMatchesCityId(cityName, cityId))
+      {
+        return Forbid();
+      }
 
       if(!await _cityInfoRepository.CityExistsAsync(cityId))
       {

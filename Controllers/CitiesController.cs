@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 namespace CityInfo.API.Controllers
 {
   [ApiController]
-  // [Authorize (Policy = "AllowedCities")]
+  [Authorize (Policy = "AllowedCities")]
   // [Authorize]
   [Produces("application/json")]
   [Route("api/v{version:apiVersion}/cities")]

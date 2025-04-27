@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 Log.Logger = new LoggerConfiguration()
@@ -142,6 +141,7 @@ builder.Services.AddSwaggerGen(setupAction =>
             }, new List<string>()
         }
     });
+    setupAction.IncludeXmlComments(xmlCommentsFile);
 });
 
 var app = builder.Build();
