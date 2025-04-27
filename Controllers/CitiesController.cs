@@ -4,13 +4,17 @@ using CityInfo.API.Services;
 using AutoMapper;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace CityInfo.API.Controllers
 {
   [ApiController]
   // [Authorize (Policy = "AllowedCities")]
   // [Authorize]
-  [Route("api/cities")]
+  [Produces("application/json")]
+  [Route("api/v{version:apiVersion}/cities")]
+  [ApiVersion("1")]
+  [ApiVersion("2")]
   public class CitiesController : ControllerBase
   {
     private readonly ICityInfoRepository _cityInfoRepository;
@@ -43,8 +47,17 @@ namespace CityInfo.API.Controllers
       return Ok(_mapper.Map<IEnumerable<CityWithoutPointOfInterestDto>>(cityEntities));
     }
 
-
+    /// <summary>
+    /// Get a city by id
+    /// </summary>
+    /// <param name="id">The id of the city to get</param>
+    /// <param name="includePointsOfInterest">Whether or not to include points of interest</param>
+    /// <returns>A city Without Points of Interest</returns>
+    /// <response code="200">Returns the requested city</response>
     [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetCity(
       int id, bool includePointsOfInterest = false)
     { 

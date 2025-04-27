@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CityInfo.API.Controllers
 {
-  [Route("api/files")]
-  [Authorize]
+  [Route("api/v{version:apiVersion}/files")]
+  // [Authorize]
   [ApiController]
 
   public class FilesController: ControllerBase
@@ -20,6 +20,7 @@ namespace CityInfo.API.Controllers
     }
 
     [HttpGet("{fileId}")]
+    [ApiVersion("0.1", Deprecated = true)]
     public ActionResult GetFile(string fileId)
     {
       var pathToFile = "Crisostomo_CV.pdf";

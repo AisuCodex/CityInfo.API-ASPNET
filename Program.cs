@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -44,29 +46,8 @@ builder.Services.AddControllers(options =>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(setupAction =>
-{
-    setupAction.AddSecurityDefinition("CityInfoApiBearerAuth", new OpenApiSecurityScheme()
-    {
-        Type = SecuritySchemeType.Http,
-        Scheme = "Bearer",
-        Description = "Input a valid token to access this API"
-    });
 
-    setupAction.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "CityInfoApiBearerAuth"
-                }
-            }, new List<string>()
-        }
-    });
-});
+
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 
 if (builder.Environment.IsDevelopment())
@@ -114,7 +95,54 @@ builder.Services.AddAuthentication("Bearer")
         setupAction.ReportApiVersions = true;
         setupAction.AssumeDefaultVersionWhenUnspecified = true;
         setupAction.DefaultApiVersion = new ApiVersion(1, 0);
-    }).AddMvc();
+    });
+
+builder.Services.AddVersionedApiExplorer(setupAction =>
+    {
+        setupAction.SubstituteApiVersionInUrl = true;
+    });
+        var apiVersionDescriptionProvider = builder.Services.BuildServiceProvider()
+        .GetRequiredService<IApiVersionDescriptionProvider>();
+
+builder.Services.AddSwaggerGen(setupAction =>
+{
+    foreach (var description in
+        apiVersionDescriptionProvider.ApiVersionDescriptions)
+        {
+            setupAction.SwaggerDoc(
+                description.GroupName,
+                new OpenApiInfo
+                {
+                    Title = $"CityInfo API {description.ApiVersion}",
+                    Version = description.ApiVersion.ToString(),
+                    Description = "Though this API you can access cities and their points of interest."
+                });
+        }
+    var xmlCommentsFile = Path.Combine(AppContext.BaseDirectory,
+        "CityInfo.API.xml");
+    setupAction.IncludeXmlComments(xmlCommentsFile);
+
+    setupAction.AddSecurityDefinition("CityInfoApiBearerAuth", new OpenApiSecurityScheme()
+    {
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        Description = "Input a valid token to access this API"
+    });
+
+    setupAction.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "CityInfoApiBearerAuth"
+                }
+            }, new List<string>()
+        }
+    });
+});
 
 var app = builder.Build();
 
@@ -129,17 +157,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(setupAction =>
     {
-        setupAction.SwaggerEndpoint(
-            "/swagger/v1/swagger.json",
-            "CityInfo API v1");
-        // Keep the default route prefix
-        // setupAction.RoutePrefix = "";
-
-        // Disable auto-refresh behavior
-        setupAction.ConfigObject.AdditionalItems["persistAuthorization"] = true;
-        setupAction.ConfigObject.AdditionalItems["tryItOutEnabled"] = true;
-        setupAction.ConfigObject.AdditionalItems["displayRequestDuration"] = true;
-        setupAction.ConfigObject.AdditionalItems["filter"] = "";
+        foreach (var description in
+        apiVersionDescriptionProvider.ApiVersionDescriptions)
+        {
+            setupAction.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
+                description.GroupName.ToUpperInvariant());
+        }
     });
 }
 

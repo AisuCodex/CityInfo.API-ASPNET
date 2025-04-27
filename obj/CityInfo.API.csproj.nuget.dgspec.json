@@ -94,6 +94,10 @@
               "target": "Package",
               "version": "[5.1.0, )"
             },
+            "microsoft.aspnetcore.mvc.versioning.apiexplorer": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
             "microsoft.entityframeworkcore.sqlite": {
               "target": "Package",
               "version": "[9.0.4, )"

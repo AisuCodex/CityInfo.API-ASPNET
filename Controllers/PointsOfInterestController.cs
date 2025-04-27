@@ -5,13 +5,16 @@ using Microsoft.AspNetCore.JsonPatch;
 using AutoMapper;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace CityInfo.API.Controllers
 {
-  [Route("api/cities/{cityId}/pointsofinterest")]
+  [Route("api/v{version:apiVersion}/cities/{cityId}/pointsofinterest")]
   [ApiController]
   // [Authorize (Policy = "AllowedCities")]
   [Produces("application/json")]
+  [ApiVersion("2")]
+
 
   public class PointsOfInterestController : ControllerBase
   {
@@ -44,12 +47,13 @@ namespace CityInfo.API.Controllers
     public async Task<ActionResult<IEnumerable<PointOfInterestDto>>> GetPointsOfInterest(
       int cityId)
     {
-      var cityName = User.Claims.FirstOrDefault(c => c.Type == "city")?.Value;
+      //Authorization
+      // var cityName = User.Claims.FirstOrDefault(c => c.Type == "city")?.Value;
       
-      if(!await _cityInfoRepository.CityNameMatchesCityId(cityName, cityId))
-      {
-        return Forbid();
-      }
+      // if(!await _cityInfoRepository.CityNameMatchesCityId(cityName, cityId))
+      // {
+      //   return Forbid();
+      // }
 
       if(!await _cityInfoRepository.CityExistsAsync(cityId))
       {
